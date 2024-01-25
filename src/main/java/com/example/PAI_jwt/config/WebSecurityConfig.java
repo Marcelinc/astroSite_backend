@@ -63,7 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         // W przykładzie nie ma potrzeby stosowania zabezpieczenia przed CSRF
         httpSecurity.csrf().disable()
         // poniższe żądanie nie wymaga uwierzytelniania
-        .authorizeRequests().antMatchers("/authenticate", "/register")
+        .authorizeRequests().antMatchers("/authenticate", "/register","/items/getPopular","/items/getTelescopes",
+                "/items/getLens","/items/getFilters","/items/getBinoculars")
         .permitAll()
         // wszystkie pozostałe żądania wymagają uwierzytelniania
         .anyRequest().authenticated().and()

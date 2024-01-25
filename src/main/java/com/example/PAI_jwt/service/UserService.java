@@ -15,5 +15,9 @@ import com.example.PAI_jwt.model.UserDto;
 public interface UserService {
     public UserDao getUserByUsername(String username);
     
-    //public UserDao getUser(String username);
+    public UserDto getUserData(String username);
+    
+    public long getUserId(String username);
+    
+    public int editUser(String username, String email, String actualUsername);
 }

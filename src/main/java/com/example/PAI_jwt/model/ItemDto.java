@@ -19,9 +19,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDto {
-    private long id;
-    private String username;
-    private String email;
-    private String profileImg;
+public class ItemDto {
+    private long id_item;
+    private String name;
+    private ItemType type;
+    private Double price;
+    private int soldCount;
+    private boolean available;
+    private long owner;
+    
+    private enum ItemType {
+        TELESCOPE,LENS,FILTER,BINOCULARS
+    }
 }

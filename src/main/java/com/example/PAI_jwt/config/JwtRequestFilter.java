@@ -4,9 +4,12 @@
  */
 package com.example.PAI_jwt.config;
 
+import com.example.PAI_jwt.model.JsonResponse;
 import com.example.PAI_jwt.service.JwtUserDetailsService;
+import com.google.gson.Gson;
 import io.jsonwebtoken.ExpiredJwtException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +34,8 @@ public class JwtRequestFilter extends OncePerRequestFilter{
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     
+    //private Gson gson = new Gson();
+    
     @Override
     protected void doFilterInternal(HttpServletRequest request,HttpServletResponse response, FilterChain chain)
     throws ServletException, IOException {
@@ -42,12 +47,25 @@ public class JwtRequestFilter extends OncePerRequestFilter{
         // Bearer i pobrać tylko właściwy token
         if (requestTokenHeader!=null && requestTokenHeader.startsWith("Bearer ")) {
             jwtToken = requestTokenHeader.substring(7);
+            
+            //String res;
+            ///PrintWriter out = response.getWriter();
+            //response.setContentType("application/json");
+            //response.setCharacterEncoding("UTF-8");
+            
             try {
                 username = jwtTokenUtil.getUsernameFromToken(jwtToken);
             } catch (IllegalArgumentException e) {
                 System.out.println("Unable to get JWT Token");
+                //res = gson.toJson(new JsonResponse("Bad token"));
+                //out.print(res);
+                //out.flush();
+                
             } catch (ExpiredJwtException e) {
                 System.out.println("JWT Token has expired");
+                //res = gson.toJson(new JsonResponse("Bad token"));
+                //out.print(res);
+                //out.flush();
             }
         } else {
             logger.warn("JWT Token does not begin with Bearer String");

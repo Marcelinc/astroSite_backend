@@ -4,6 +4,8 @@
  */
 package com.example.PAI_jwt.model;
 
+import java.util.Date;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,9 +21,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDto {
-    private long id;
-    private String username;
-    private String email;
-    private String profileImg;
+public class OrderItemDto {
+    private OrderDao order;
+    
+    private List<Long> id_item;
 }

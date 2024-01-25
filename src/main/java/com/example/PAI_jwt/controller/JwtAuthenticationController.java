@@ -9,17 +9,19 @@ import com.example.PAI_jwt.model.JsonResponse;
 import com.example.PAI_jwt.model.JwtRequest;
 import com.example.PAI_jwt.model.JwtResponse;
 import com.example.PAI_jwt.model.UserDao;
-import com.example.PAI_jwt.model.UserDto;
 import com.example.PAI_jwt.repository.UserRepository;
 import com.example.PAI_jwt.service.JwtUserDetailsService;
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,11 +50,12 @@ public class JwtAuthenticationController {
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         authenticate(authenticationRequest.getUsername(),authenticationRequest.getPassword());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        
         if(userDetails != null){
             final String token = jwtTokenUtil.generateToken(userDetails);
             return ResponseEntity.ok(new JwtResponse(token));
         }
-        return null;
+        return ResponseEntity.ok(new JsonResponse("Brak użytkownika o podanym loginie i haśle"));
     }
     
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -66,6 +69,12 @@ public class JwtAuthenticationController {
         }
         
         return ResponseEntity.ok(new JsonResponse<>("Success",userDetailsService.save(user).getUsername()));
+    }
+    
+    @GetMapping({"/isLogged"})
+    public ResponseEntity<?> isLogged(Authentication authentication){
+        String username = authentication.getName();
+        return ResponseEntity.ok(new JsonResponse("Success"));
     }
     
     private void authenticate(String username, String password)

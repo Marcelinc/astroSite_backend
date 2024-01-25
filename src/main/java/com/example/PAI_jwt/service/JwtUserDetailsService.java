@@ -5,7 +5,6 @@
 package com.example.PAI_jwt.service;
 
 import com.example.PAI_jwt.model.UserDao;
-import com.example.PAI_jwt.model.UserDto;
 import com.example.PAI_jwt.repository.UserRepository;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;

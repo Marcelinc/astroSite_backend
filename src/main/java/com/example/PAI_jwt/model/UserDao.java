@@ -44,9 +44,6 @@ public class UserDao {
     
     @Column
     private String profileImg;
-    
-    @OneToOne(mappedBy = "user")
-    private ItemDao item;
 
     public String getProfileImg() {
         return profileImg;

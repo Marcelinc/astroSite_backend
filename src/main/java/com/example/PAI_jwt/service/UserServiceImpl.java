@@ -30,10 +30,21 @@ public class UserServiceImpl implements UserService{
         return userRepository.findByUsername(username);
     }
     
-    //@Override
-   // public UserDao getUser(String username){
-    //    return userRepository.findUser(username);
-   // }
     
+    
+    @Override
+    public UserDto getUserData(String username){
+        return userRepository.getUserData(username);
+    }
+
+    @Override
+    public int editUser(String username, String email, String actualUsername) {
+         return userRepository.editUser(username, email, actualUsername);
+    }
+    
+    @Override
+    public long getUserId(String username){
+        return userRepository.getUserId(username);
+    }
     
 }

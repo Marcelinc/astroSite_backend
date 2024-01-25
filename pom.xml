@@ -68,6 +68,17 @@
                     <artifactId>mapstruct</artifactId>
                     <version>1.4.2.Final</version>
                 </dependency>
+                
+                
+                <dependency>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>javax.servlet-api</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.google.code.gson</groupId>
+                    <artifactId>gson</artifactId>
+                    <version>${gson.version}</version>
+                </dependency>
 	 <dependency>
 	  <groupId>net.minidev</groupId>
 	  <artifactId>json-smart</artifactId>
