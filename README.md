@@ -4,6 +4,7 @@ Built with
 * [![Java][Java-img]][Java-url]
 * [![Spring][Spring-img]][Spring-url]
 * [![Hibernate][Hibernate-img]][Hibernate-url]
+* [![MySQL][MySQL-img]][MySQL-url]
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [Spring-img]: https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white
@@ -12,3 +13,5 @@ Built with
 [Java-url]: https://www.java.com
 [Hibernate-img]: https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white
 [Hibernate-url]: https://hibernate.org/
+[MySQL-img]: https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white
+[MySQL-url]: https://www.mysql.com/
